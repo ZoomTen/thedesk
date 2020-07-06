@@ -89,8 +89,25 @@ Background::Background() :
 
         this->changeBackground();
     });
+    connect(d->bg, &BackgroundController::updateDynWallpaper,
+            this, [=]{
+        if (ui->stackedWidget->currentWidget() == ui->backgroundPage){
+            d->bg->getCurrentBackground(this->size())->then([=](BackgroundController::BackgroundData data){
+                d->background = data;
+                d->retrieving = true;
+                QTimer::singleShot(500, this, [ = ] {
+                    // TODO: ZUMI: halp how do fade
+                    this->update();
+                    ui->backgroundPage->update();
+                    d->retrieving = false;
+                });
+            });
+        }
+    });
+    this->showCommunityBackgroundSettings(
+                d->bg->currentBackgroundName(BackgroundController::Desktop) == "community" ||
+                d->bg->currentBackgroundName(BackgroundController::LockScreen) == "community");
 
-    this->showCommunityBackgroundSettings(d->bg->currentBackgroundName(BackgroundController::Desktop) == "community" || d->bg->currentBackgroundName(BackgroundController::LockScreen) == "community");
     switch (d->bg->stretchType()) {
         case BackgroundController::StretchFit:
             ui->stretchFitButton->setChecked(true);
