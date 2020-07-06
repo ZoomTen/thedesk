@@ -143,8 +143,16 @@ unix {
 
     media.files = media/
     media.path = /usr/share/thedesk/
+    
+    wallpaperinfo.files = dynwallpapers/*.json
+    wallpaperinfo.path  = /usr/share/thedesk/dynwallpapers
+    
+    wallpapercactus.files = dynwallpapers/cactus/*.png
+    wallpapercactus.path  = /usr/share/thedesk/dynwallpapers/cactus
+    
+    INSTALLS += wallpaperinfo wallpapercactus
 
-    INSTALLS += target translations defaults headers media
+    INSTALLS += target translations defaults headers media 
 }
 
 DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"

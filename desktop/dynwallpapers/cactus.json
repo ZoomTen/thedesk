@@ -1,0 +1,17 @@
+{
+    "meta": {
+        "title"   : "Cactus",
+        "by"      : "Zumi Daxuya",
+        "license" : "CC0"
+    },
+    "data": [
+        {
+            "showAt" : "07:00",
+            "file"   : "/usr/share/thedesk/dynwallpapers/cactus/cactuswpp.png"
+        },
+        {
+            "showAt" : "19:00",
+            "file"   : "/usr/share/thedesk/dynwallpapers/cactus/cactuswpp_n.png"
+        }
+    ]
+}
